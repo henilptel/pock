@@ -19,5 +19,10 @@ target 'Pock' do
   # Utils
   pod 'Magnet'
   pod 'Zip'
+  # Not declared here upstream despite being an actual dependency — the
+  # released Pock.app bundles it (confirmed via its crash log's own
+  # loaded-images list), but the current Podfile has drifted from what
+  # actually ships.
+  pod 'TinyConstraints'
 
 end
