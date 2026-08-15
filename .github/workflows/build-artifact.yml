@@ -1,0 +1,25 @@
+name: Build artifact
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "Pock/**"
+      - "Pock.xcodeproj/**"
+      - "Podfile"
+      - "export-options.plist"
+      - ".github/workflows/build-artifact.yml"
+  workflow_dispatch:
+
+jobs:
+  build:
+    uses: henilptel/xcode-ci/.github/workflows/build.yml@main
+    with:
+      mode: archive
+      use-cocoapods: true
+      workspace: Pock.xcworkspace
+      scheme: Pock
+      export-options-plist: export-options.plist
+      artifact-name: Pock-app
+      artifact-path: Release/Pock.app
