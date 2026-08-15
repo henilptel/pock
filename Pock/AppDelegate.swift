@@ -25,7 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		#if DEBUG
         Roger.allowedLevels = [.error, .debug, .info]
 		#else
-		Roger.allowedLevels = []
+		Roger.allowedLevels = [.error]
 		#endif
 		
 		/// Initialise AppCenter stuff (Analytics & Crash)
