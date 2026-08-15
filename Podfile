@@ -10,7 +10,7 @@ target 'Pock' do
   # (EXC_BAD_INSTRUCTION in PKTouchBarMouseController.dismiss ->
   # showCursor, force-unwrapping a view under a reentrant-teardown race)
   # while testing it before upstreaming.
-  pod 'PockKit', :git => 'https://github.com/henilptel/pockkit.git', :branch => 'master'
+  pod 'PockKit', :git => 'https://github.com/henilptel/pockkit.git', :branch => 'fix/touchbar-mouse-crash-0.2.0'
 
   # Analytics
   pod 'AppCenter/Analytics'
