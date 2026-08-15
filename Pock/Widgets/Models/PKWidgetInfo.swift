@@ -74,7 +74,14 @@ public struct PKWidgetInfo: Equatable {
 		self.loaded = bundle.isLoaded
 		/// Preferences
 		if let preferencesClassName: String = bundle[.widgetPreferenceClass] {
-			self.preferencesClass = NSClassFromString(preferencesClassName)
+			// NSClassFromString is a *global* Objective-C class lookup — it
+			// doesn't reliably find classes from a dynamically-loaded
+			// plugin bundle like this one (confirmed live via lldb: it
+			// returns nil even for the widget's own principal class,
+			// despite that class working fine via bundle.principalClass,
+			// a bundle-scoped lookup). Bundle.classNamed(_:) is the
+			// bundle-scoped equivalent, made for exactly this case.
+			self.preferencesClass = bundle.classNamed(preferencesClassName)
 		} else {
 			self.preferencesClass = nil
 		}
