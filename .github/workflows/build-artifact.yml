@@ -3,7 +3,7 @@ name: Build artifact
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - "Pock/**"
       - "Pock.xcodeproj/**"
